@@ -1,0 +1,58 @@
+<html>
+<head>
+	<title>DOM Events In Order</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-rc1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/foundation/6.2.1/foundation.min.css" />
+</head>
+<body style="padding: 5%;">
+	<h1>DOM Events</h1>
+	<form id="form">
+		<label>First Name <br /><input type="text" name="firstname" id="firstname"></label>
+    <label>Last Name <br /><input type="text" name="lastname" id="lastname"></label>
+  	<input type="submit" value="Submit">
+	</form>
+	<script>
+		$(document).ready(function(){
+
+			console.log("KD == keydown");
+			console.log("KP == keypress");
+			var $firstname = $("#firstname");
+
+			$firstname.keypress(function(e){
+				var code = e.which || e.keyCode;
+				switch(code){
+					case 9:
+						console.log("KP: Tab");
+						break;
+					case 16:
+						console.log("KP: Shift");
+						break;
+					case 65:
+						console.log("KP: Shift/A");
+						break;
+					default:
+						console.log("KP: Nothing.");
+						break;
+				}
+			});
+				$firstname.on('keydown', function(e){
+					var code = e.which || e.keyCode;
+					switch(code){
+						case 9:
+							console.log("KD: Tab");
+							break;
+						case 16:
+							console.log("KD: Shift");
+							break;
+						case 65:
+							console.log("KD: Shift/A");
+							break;
+						default:
+							console.log("KD: Nothing.");
+							break;
+					}
+			});
+		});
+	</script>
+</body>
+</html>
